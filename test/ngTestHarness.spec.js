@@ -401,7 +401,7 @@ describe('ngTestHarness', function() {
         var harness;
 
         beforeEach(function () {
-            angular.module('test', []).controller('testCtrl',function ($scope) {
+            angular.module('test', []).controller('testCtrl',function ($scope, injectedMessage) {
                 $scope.message = 'Hello';
                 $scope.messageCopy = '';
 
@@ -415,6 +415,9 @@ describe('ngTestHarness', function() {
                     },
                     setMessage: function (val) {
                         $scope.message = val;
+                    },
+                    getInjectedMessage: function () {
+                        return injectedMessage;
                     }
                 };
             });
@@ -423,7 +426,7 @@ describe('ngTestHarness', function() {
         });
 
         it('should get controller instance with scope', function () {
-            var controller = harness.getController('testCtrl');
+            var controller = harness.getController('testCtrl', {injectedMessage: 'Hello World!'});
 
             expect(controller).not.toBe(undefined);
             expect(controller.$scope).not.toBe(undefined);
@@ -432,7 +435,7 @@ describe('ngTestHarness', function() {
         });
 
         it('should call $watcher when $scope changed', function () {
-            var controller = harness.getController('testCtrl');
+            var controller = harness.getController('testCtrl', {injectedMessage: 'Hello World!'});
 
             controller.$scope.message = 'Goodbye';
             harness.digest(controller.$scope);
@@ -440,7 +443,7 @@ describe('ngTestHarness', function() {
         });
 
         it('should call $watcher when $scope changed in controller function', function () {
-            var controller = harness.getController('testCtrl');
+            var controller = harness.getController('testCtrl', {injectedMessage: 'Hello World!'});
 
             controller.setMessage("Goodbye");
             harness.digest(controller.$scope);
@@ -449,11 +452,22 @@ describe('ngTestHarness', function() {
 
         it('should inject passed in $scope', function () {
             var controller = harness.getController('testCtrl', {
-                testMessage: 'Bonjour'
+                $scope: {
+                    testMessage: 'Bonjour'
+                },
+                injectedMessage: 'Hello World!'
             });
 
             expect(controller.$scope.testMessage).toBe('Bonjour');
             expect(controller.$scope.message).toBe('Hello');
+        });
+
+        it('should inject a special message', function () {
+            var controller = harness.getController('testCtrl', {
+                injectedMessage: 'Hello World!'
+            });
+
+            expect(controller.getInjectedMessage()).toBe('Hello World!');
         });
     });
 });
