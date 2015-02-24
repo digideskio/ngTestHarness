@@ -476,7 +476,16 @@
          */
         getController: function (name, dependencies) {
             dependencies = dependencies || {};
-            dependencies.$scope = this.createChildScope(dependencies.$scope || {});
+
+            /**
+             * Allow dependencies.$scope to be an actual scope or a stub with variables
+             */
+            if (!dependencies.$scope) {
+                dependencies.$scope = {};
+            }
+            if (!dependencies.$scope.$digest) {
+                dependencies.$scope = this.createChildScope(dependencies.$scope);
+            }
 
             var controller = this.getProvider('$controller')(name, dependencies);
 

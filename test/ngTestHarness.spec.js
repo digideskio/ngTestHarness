@@ -450,11 +450,23 @@ describe('ngTestHarness', function() {
             expect(controller.$scope.messageCopy).toBe("Goodbye");
         });
 
-        it('should inject passed in $scope', function () {
+        it('should inject passed in $scope values', function () {
             var controller = harness.getController('testCtrl', {
                 $scope: {
                     testMessage: 'Bonjour'
                 },
+                injectedMessage: 'Hello World!'
+            });
+
+            expect(controller.$scope.testMessage).toBe('Bonjour');
+            expect(controller.$scope.message).toBe('Hello');
+        });
+
+        it('should inject passed in literal $scope', function () {
+            var someScope = harness.rootScope.$new();
+            someScope.testMessage = 'Bonjour';
+            var controller = harness.getController('testCtrl', {
+                $scope: someScope,
                 injectedMessage: 'Hello World!'
             });
 
