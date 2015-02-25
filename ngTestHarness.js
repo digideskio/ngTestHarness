@@ -392,8 +392,6 @@
          * @throws {Error} An invalid scope cannot be cleared and therefore will throw an exception.
          */
         clearContext: function (scope) {
-            if (!this.isValidScope(scope)) throw new Error('The scope supplied is not valid.');
-
             // If we are testing cookies, clear them.
             angular.isFunction(this.clearCookies) && this.clearCookies();
 
@@ -408,7 +406,10 @@
             this.verifyHttp();
 
             // Just for surety, destroy the scope so it doesn't stick around and affect the next test.
-            scope.$destroy();
+            if (scope) {
+                if (!this.isValidScope(scope)) throw new Error('The scope supplied is not valid.');
+                scope.$destroy();
+            }
         },
 
         /**
@@ -448,7 +449,7 @@
          */
         verifyRootIsClean: function (resolve, reject) {
             return this.q(function () {
-                if (this.rootScope.$$phase) {
+                if (!this.rootScope.$$phase) {
                     resolve();
                 }
                 else {
