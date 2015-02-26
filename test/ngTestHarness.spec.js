@@ -308,16 +308,14 @@ describe('ngTestHarness', function() {
     });
 
     describe('verifyHttp, flushHttp', function () {
-        it('should call $httpBackend\'s verifyNoOutstandingRequest and clear templateCache.', function () {
+        it('should call $httpBackend\'s verifyNoOutstandingRequest.', function () {
             var harness = new ngTestHarness();
 
             spyOn(harness.httpBackend, 'verifyNoOutstandingRequest');
-            spyOn(harness, 'clearTemplateCache');
 
             harness.verifyHttp();
 
             expect(harness.httpBackend.verifyNoOutstandingRequest).toHaveBeenCalled();
-            expect(harness.clearTemplateCache).toHaveBeenCalled();
         });
 
         it('should call $httpBackend\'s flush and digest if given a scope.', function () {
