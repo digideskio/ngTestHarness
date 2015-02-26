@@ -371,7 +371,6 @@
         verifyHttp: function () {
             this.httpBackend.verifyNoOutstandingRequest();
             this.httpBackend.resetExpectations();
-            this.clearTemplateCache();
         },
 
         /**
