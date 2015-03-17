@@ -417,14 +417,14 @@
          * @param {Object} scope The scope to digest
          * @throws {Error} An invalid scope cannot be cleared and therefore will throw an exception.
          */
-        digest: function (scope) {
+        digest: function (scope, delay) {
             if (!this.isValidScope(scope)) throw new Error('The scope supplied is not valid.');
 
             scope.$digest();
 
             // Flush timeouts, and make sure there are no more.
             if (this.browser.deferredFns.length > 0) {
-                this.flushTimeout(0);
+                this.flushTimeout(delay ? delay : 0);
                 this.verifyTimeout();
             }
 
