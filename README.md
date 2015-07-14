@@ -1,8 +1,8 @@
-#Angular Testing Harness [![Build Status](https://travis-ci.org/gaikai/ngTestHarness.svg?branch=master)](https://travis-ci.org/gaikai/ngTestHarness)
+## Angular Testing Harness [![Build Status](https://travis-ci.org/gaikai/ngTestHarness.svg?branch=master)](https://travis-ci.org/gaikai/ngTestHarness)
 Testing harness for Angular scopes, controllers, and providers.
 Streamlines the boilerplate created by needing to inject dependencies for Angular Unit Testing.  Abstracts other features, and wraps setup and cleanup operations in easy to use functions.
 
-##Modules Loaded By Default
+# Modules Loaded By Default
   * ng
   * ngMock
   * ngSanitize
@@ -11,10 +11,10 @@ Additional modules, should be included in the modules parameter.
 
 _Note: Loading `ngCookies` adds new functionality to the testing harness. (Please see `handleCookie` and `clearCookies` in the API)_
 
-##API
+## API
 <a href="api.md">API</a>
 
-##If using Jasmine
+## If using Jasmine
 1. Make sure your SpecRunner includes:
     * Angular
     * Angular Mocks
@@ -25,7 +25,7 @@ _Note: Loading `ngCookies` adds new functionality to the testing harness. (Pleas
 
 3. Open the SpecRunner in a browser.
 
-###Jasmine Modularized Templates Example
+### Jasmine Modularized Templates Example
 ```javascript
 angular.module('templates-main', ['template.html']);
 
@@ -34,7 +34,7 @@ angular.module('template.html', []).run(['$templateCache', function($templateCac
 }]);
 ```
 
-###Jasmine SpecRunner Test Example
+### Jasmine SpecRunner Test Example
 ```javascript
 describe("Load Sample\n", function () {
   var harness = new ngTestHarness([
@@ -54,7 +54,7 @@ describe("Load Sample\n", function () {
 ```
 
 
-##If using Karma
+## If using Karma
 1. Make sure the Karma configuration includes:
     * Angular
     * Angular Mocks
@@ -77,7 +77,7 @@ preprocessors: {
 }
 ```
 
-###Karma Test Example (Using Jasmine)
+### Karma Test Example (Using Jasmine)
 ```javascript
 describe("Load Sample\n", function () {
   var harness = new ngTestHarness([
@@ -97,12 +97,12 @@ describe("Load Sample\n", function () {
 
 ```
 
-##Authors
+## Authors
 * [David Posin](https://github.com/Lastalas)
 * [Nate Ferrero](https://github.com/NateFerrero)
 * [Daniel Jordan](https://github.com/danjordan2)
 
-##Contributors
+## Contributors
 * [Jarrod Perez](https://github.com/cytoplankton)
 * [Jeremy Bernstein](https://github.com/Dr-Jerm)
 * [Trey Cordova](https://github.com/treycordova)
@@ -110,10 +110,10 @@ describe("Load Sample\n", function () {
 * Matt Furniss
 * [David Maddison](https://github.com/maddisondavid)
 
-##License
+## License
 [MIT License](LICENSE.md)
 
-##Articles
+## Articles
 * [ngTestHarness: Strap in with this new testing helper for Angular](http://randomjavascript.blogspot.com/2015/01/ngtestharness-strap-in-with-this-new.html)
 * [Using ngTestHarness to simplify $httpBackend testing](http://randomjavascript.blogspot.com/2015/01/using-ngtestharness-to-simplify.html)
 
