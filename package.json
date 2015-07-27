@@ -1,6 +1,6 @@
 {
   "name": "ngtestharness",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Creates a context for Angular unit tests and provides several convenience functions to streamline testing.",
   "keywords": [
     "angular",
