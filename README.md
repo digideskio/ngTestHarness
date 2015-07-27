@@ -2,6 +2,12 @@
 Testing harness for Angular scopes, controllers, and providers.
 Streamlines the boilerplate created by needing to inject dependencies for Angular Unit Testing.  Abstracts other features, and wraps setup and cleanup operations in easy to use functions.
 
+## npm Install
+```
+npm install ngtestharness
+```
+
+
 # Modules Loaded By Default
   * ng
   * ngMock
