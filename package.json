@@ -1,6 +1,6 @@
 {
   "name": "ngtestharness",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Creates a context for Angular unit tests and provides several convenience functions to streamline testing.",
   "keywords": [
     "angular",
@@ -13,7 +13,7 @@
   },
   "author": "David Posin <david.posin.smp@gmail.com>, Nate Ferrero <nateferrero@gmail.com>, Trey Cordova <treycordova@hotmail.com>, Daniel Jordan <daniel_jordan@csu.fullerton.edu> ",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "jsdoc": "^3.3.0-alpha13",
     "jsdoc-to-markdown": "^0.5.9",
     "karma": "^0.12.28",
